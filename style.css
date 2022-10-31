@@ -48,3 +48,36 @@ h1{
   padding:10px;
   margin:10px;
 }
+
+
+
+.container{
+  width:100%;
+  height:100%;
+  background-color:rgb(206, 38, 222);
+  display:flex;
+  flex-direction:column;
+}
+
+.container h1{
+  color:rgb(0, 0, 0);
+  text-align:center;
+  padding:10px;
+}
+
+#userDate{  
+  color:rgb(0, 255, 119);
+  padding:10px;
+  align-self: flex-end;
+  padding-right:40px;
+}
+
+
+#contentOfUser{
+  color:black;
+  font-size:15px;
+  border: 2px solid black;
+  border-radius:7px;
+  padding:20px;
+  margin:20px;
+}

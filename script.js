@@ -23,8 +23,16 @@ let rubric = document.querySelector("#rubric");
 let date = document.querySelector("#date");
 let textContent = document.querySelector("#textContent");
 let submit = document.querySelector(".submit")
+let divinput = document.querySelector(".input")
 
-console.log(date)
+let arrayOfBlog =[];
+let container;
+
+
+if (!localStorage.getItem("userPost")){
+  localStorage.setItem("userPost",container);
+}
+container= localStorage.getItem("userPost");
 
 submit.addEventListener("click",createElementsOfUser);
 
@@ -35,11 +43,21 @@ function createElementsOfUser(){
   output = `
     <div class ="container">
       <h1>${rubric.value}</h1>
-      <p id="date">${date.value}</p>
+      <p id="userDate">${date.value}</p>
       <p id="contentOfUser">${textContent.value}</p>    
     </div>
   
   `
 
-  body.insertAdjacentHTML("afterend",output);
+  divinput.insertAdjacentHTML("afterend",output);
+  arrayOfBlog.push(output);
+  console.log(arrayOfBlog);
+
+
+  rubric.value ="";
+  date.value ="";
+  textContent.value ="";
+
+  localStorage.setItem("userPost", container);
+  container = localStorage.getItem("userPost");
 }
