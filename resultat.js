@@ -46,7 +46,7 @@ function CreatingLayout(){
 }
 
 function decrement(e){
-  player.player.score--;
+  
 }
 
 function increment(e){
