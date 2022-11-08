@@ -1,0 +1,25 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+input, button {
+  font-size:30px;
+  margin:20px;
+  padding:10px;
+} 
+div{
+  display:flex;
+  margin-top: 20px;  
+  background-color: aquamarine;
+}
+p{
+  margin:10px;
+  font-size: 20px;
+}
+.BtnDec, .BtnInc{
+  margin:10px;
+  border-radius:6px;
+  font-style:black;
+  width:50px;
+}

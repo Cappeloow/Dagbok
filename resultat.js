@@ -1,21 +1,21 @@
 
 let body = document.querySelector("body");
-let players =  [];
 let input = document.querySelector("input");
 let button = document.querySelector("#NewPlayer");
-let score =0;
 
-
-
+let playersInGame =[];
+let BtnDec;
+let BtnInc;
 
 
 
 
 button.addEventListener("click",()=>{
-  let player=input.value;
-  players.push({player,score});
-  input.value="";
-  console.log(players);
+  let players = {
+    firstName:input.value,
+    score:0,
+  }
+  playersInGame.push(players);
   CreatingLayout();
 });
 
@@ -26,29 +26,66 @@ button.addEventListener("click",()=>{
 
 
 function CreatingLayout(){
+  let divOfPlayer = document.createElement("div");
+  let nameOfPlayer = document.createElement("h1");
+  let playerScore = document.createElement("p");
+  let btnDec = document.createElement("button");
+  let btnInc= document.createElement("button");
+  btnDec.className = "BtnDec";
+  btnInc.className ="BtnInc";
+  btnDec.innerText="-";
+  btnInc.innerText="+";
 
-  let divOfResult = document.createElement("div");
-  let output;
+  
+  divOfPlayer.appendChild(nameOfPlayer);
+  divOfPlayer.appendChild(playerScore);
+ 
+  
   let id = 0;
-  for (const player of players){
-    output = `
-      <div>
-      <h1>${player.player}</h1>
-      <p>${player.score}</p>
-      <button id="${id}" onclick="decrement(this)">-</button>
-      <button id="${id}" onclick="increment(this)">+</button>
-      </div>
-    `
+  for (const player of playersInGame){
+    nameOfPlayer.innerHTML = player.firstName;
+    playerScore.innerHTML = player.score +" points";
+    player.id=id;
+    divOfPlayer.appendChild(btnDec);   
+    divOfPlayer.appendChild(btnInc); 
+    btnDec.id = id;
+    btnInc.id = id;
     id++;
   }
-  divOfResult.innerHTML =output;
-  body.appendChild(divOfResult);
-}
-
-function decrement(e){
   
+  body.appendChild(divOfPlayer);
+  buttonListner();
 }
 
-function increment(e){
 
+
+
+function buttonListner(){
+  BtnDec = document.getElementsByClassName("BtnDec");
+  BtnInc = document.getElementsByClassName("BtnInc");
+  
+
+  for (const btn of BtnDec){
+    btn.addEventListener("click",decrement);
+  }
+
+  for (const btn of BtnInc){
+    btn.addEventListener("click", increment);
+  }
+}
+
+function increment(){
+ let theActual;
+
+  var holder = playersInGame.findIndex(playersInGame.id,this.id)
+  console.log(holder);
+  if (theActual.id ===this.id){
+    console.log("true");
+
+  }
+}
+
+
+function decrement(){
+ 
 }
