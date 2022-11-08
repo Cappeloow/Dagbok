@@ -22,31 +22,31 @@ let textContent = document.querySelector("#textContent");
 let submit = document.querySelector(".submit");
 let divinput = document.querySelector(".input");
 let arrayOfBlog = [];
-let blogOutputs = document.querySelector(".output");
+let outputs = document.querySelector(".output");
 let container = document.querySelector(".container");
 
+console.log(outputs);
 submit.addEventListener("click", pushElementsToArray);
 
-  if(JSON.parse(localStorage.getItem("MyBlogg"))){
 
-    arrayOfBlog = JSON.parse(localStorage.getItem("MyBlogg"));
-  }
 
 
 function pushElementsToArray() {
-  arrayOfBlog.push({
-    rubric: rubric.value,
+  let post = {
+    rubric:rubric.value,
     date: date.value,
     text: textContent.value,
-  });
-  console.log(arrayOfBlog);
+
+  }
+  arrayOfBlog.push(post);
+   console.log(arrayOfBlog);
   createElementsOfUser();
-  localStorage.setItem("MyBlogg", JSON.stringify(arrayOfBlog));
-  JSON.parse(localStorage.getItem("MyBlogg"));
+  localStorage.setItem("Posts",JSON.stringify(arrayOfBlog));
   rubric.value = "";
   date.value = "";
   textContent.value = "";
 }
+
 function createElementsOfUser() {
   let output="";
   for (const post of arrayOfBlog) {
@@ -58,7 +58,7 @@ function createElementsOfUser() {
     </div>
 
   `;
-  }
-  divinput.insertAdjacentHTML("afterend", output);
+}
+outputs.insertAdjacentHTML("beforebegin",output);
 }
 createElementsOfUser();
