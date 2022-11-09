@@ -34,7 +34,9 @@ submit.addEventListener("click", pushElementsToArray);
 function pushElementsToArray() {
   let localItems = JSON.parse(localStorage.getItem("Posts"));
   if (localItems===null){
-    arrayOfBlog=[];
+    arrayOfBlog=[].map(obj => {
+      return {...obj, date: new Date(obj.date)};
+    });
   } else {
     arrayOfBlog = localItems;
   }
@@ -47,7 +49,6 @@ function pushElementsToArray() {
   }
   arrayOfBlog.push(post);
   rubric.value = "";
-  date.value = "";
   textContent.value = "";
   localStorage.setItem("Posts",JSON.stringify(arrayOfBlog));
    DisplayBlogsOfUser();
@@ -57,10 +58,16 @@ function pushElementsToArray() {
 function DisplayBlogsOfUser() {
   let localItems = JSON.parse(localStorage.getItem("Posts"));
   if (localItems===null){
-    arrayOfBlog=[];
+    arrayOfBlog=[].map(obj => {
+      return {...obj, date: new Date(obj.date)};
+    });
   } else {
     arrayOfBlog = localItems;
   }
+
+
+  arrayOfBlog.sort((a, b) => new Date(b.date) - new Date (a.date));
+
 
   let output="";
   for (const post of arrayOfBlog) {
