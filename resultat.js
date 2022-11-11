@@ -44,7 +44,7 @@ function CreatingLayout(){
   let id = 0;
   for (const player of playersInGame){
     nameOfPlayer.innerHTML = player.firstName;
-    playerScore.innerHTML = player.score +" points";
+    playerScore.innerHTML = player.score;
     player.id=id;
     divOfPlayer.appendChild(btnDec);   
     divOfPlayer.appendChild(btnInc); 
@@ -54,38 +54,21 @@ function CreatingLayout(){
   }
   
   body.appendChild(divOfPlayer);
-  buttonListner();
+
+  btnDec.addEventListener("click",()=>decrement(playerScore));
+  btnInc.addEventListener("click", ()=>increment(playerScore));
 }
 
 
 
 
-function buttonListner(){
-  BtnDec = document.getElementsByClassName("BtnDec");
-  BtnInc = document.getElementsByClassName("BtnInc");
-  
 
-  for (const btn of BtnDec){
-    btn.addEventListener("click",decrement);
-  }
 
-  for (const btn of BtnInc){
-    btn.addEventListener("click", increment);
-  }
-}
-
-function increment(){
- let theActual;
-
-  var holder = playersInGame.findIndex(playersInGame.id,this.id)
-  console.log(holder);
-  if (theActual.id ===this.id){
-    console.log("true");
-
-  }
+function increment(playerScore){
+playerScore.textContent++;
 }
 
 
-function decrement(){
- 
+function decrement(playerScore){
+  playerScore.textContent--;
 }
